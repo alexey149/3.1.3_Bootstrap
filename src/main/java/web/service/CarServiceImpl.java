@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service // Помечаем класс как Spring Service
+@Service
 public class CarServiceImpl implements CarService {
 
     @Override
