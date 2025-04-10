@@ -12,9 +12,9 @@ import java.util.List;
 @Controller
 public class CarController {
 
-    private final CarService carService; // Изменено на интерфейс
+    private final CarService carService;
 
-    @Autowired // Автозаполнение зависимости
+    @Autowired
     public CarController(CarService carService) {
         this.carService = carService;
     }
