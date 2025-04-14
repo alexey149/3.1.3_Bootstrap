@@ -1,36 +1,25 @@
 package web.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
     @Column(name = "name")
-    @NotBlank(message = "Имя не должно быть пустым")
     private String name;
-
     @Column(name = "surname")
-    @NotBlank(message = "Фамилия не должна быть пустой")
-    private String surname;
-
-    public User(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
-    }
+    private String sureName;
 
     public User() {
+    }
+
+    public User(String name, String sureName) {
+        this.name = name;
+        this.sureName = sureName;
     }
 
     public int getId() {
@@ -49,20 +38,19 @@ public class User {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getSureName() {
+        return sureName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSureName(String sureName) {
+        this.sureName = sureName;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
+                "name='" + name + '\'' +
+                ", sureName='" + sureName + '\'' +
                 '}';
     }
 }

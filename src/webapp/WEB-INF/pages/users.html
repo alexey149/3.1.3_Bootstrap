@@ -17,16 +17,17 @@
     <tbody>
     <tr th:each="user : ${users}">
         <td th:text="${user.name}"></td>
-        <td th:text="${user.surname}"></td>
+        <td th:text="${user.sureName}"></td>
         <td>
-            <a th:href="@{/updateUser(id=${user.id})}">Update</a>
-            <a th:href="@{/deleteUser(id=${user.id})}">Delete</a>
+            <a th:href="@{/updateInfo(userId=${user.id})}">Update</a>
+            <a th:href="@{/deleteUser(userId=${user.id})}">Delete</a>
         </td>
     </tr>
     </tbody>
+
 </table>
 <br/>
-<a th:href="@{/addUser}">Add User</a>
+<a th:href="@{/addNewUser}">Add User</a>
 <div th:if="${#lists.isEmpty(users)}">
     <p>No users found.</p>
 </div>

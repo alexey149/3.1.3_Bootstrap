@@ -1,18 +1,19 @@
 package web.dao;
 
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.stereotype.Repository;
 import web.model.User;
 
 import java.util.List;
 
 public interface UserDao {
+    public List<User> getAllUsers();
 
-    List<User> getAllUsers();
+    public User getUserById(int id);
 
-    User getUser(int id);
+    public void save(User user);
 
-    void saveUser(User user);
+    public void update(User user);
 
-    void updateUser(User user);
-
-    void deleteUser(int id);
+    public void delete(int id);
 }
