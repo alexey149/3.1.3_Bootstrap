@@ -1,6 +1,6 @@
 package web.dao;
 
-import org.springframework.orm.jpa.JpaVendorAdapter;
+
 import org.springframework.stereotype.Repository;
 import web.model.User;
 

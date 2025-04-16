@@ -1,26 +1,26 @@
 package web.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
-    @Column(name = "name")
+
+    @NotBlank(message = "Имя не может быть пустым")
+    @Pattern(regexp = "^[A-Za-zА-Яа-яЁё]+$", message = "Имя должно содержать только буквы")
     private String name;
-    @Column(name = "surname")
+
+    @NotBlank(message = "Фамилия не может быть пустой")
+    @Pattern(regexp = "^[A-Za-zА-Яа-яЁё]+$", message = "Фамилия должна содержать только буквы")
     private String sureName;
 
-    public User() {
-    }
-
-    public User(String name, String sureName) {
-        this.name = name;
-        this.sureName = sureName;
-    }
+    public User() {}
 
     public int getId() {
         return id;
@@ -49,7 +49,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", sureName='" + sureName + '\'' +
                 '}';
     }

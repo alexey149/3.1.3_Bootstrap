@@ -2,10 +2,12 @@ package web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -33,9 +35,12 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public String create(@ModelAttribute("user") User user) {
+    public String create(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            // Если есть ошибки, возвращаем на форму добавления с ошибками
+            return "addUser";
+        }
         userService.save(user);
-        System.out.println("User saved" + user);
         return "redirect:/users";
     }
 
@@ -46,8 +51,11 @@ public class UserController {
     }
 
     @PostMapping("/updateUser")
-    public String updateUser(@ModelAttribute("user") User user) {
-        userService.update(user);
+    public String update(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "addUser"; // Возвращаем на форму обновления, если есть ошибки
+        }
+        userService.save(user);
         return "redirect:/users";
     }
 
