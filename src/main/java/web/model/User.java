@@ -5,19 +5,19 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name = "users")
+@Table(name = "mylastname")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank(message = "Имя не может быть пустым")
-    @Pattern(regexp = "^[A-Za-zА-Яа-яЁё]+$", message = "Имя должно содержать только буквы")
+    @NotBlank(message = "The name cannot be empty!")
+    @Pattern(regexp = "^[A-Za-zА-Яа-яЁё]+$", message = "The name must contain only letters")
     private String name;
 
-    @NotBlank(message = "Фамилия не может быть пустой")
-    @Pattern(regexp = "^[A-Za-zА-Яа-яЁё]+$", message = "Фамилия должна содержать только буквы")
+    @NotBlank(message = "The last name must contain only letters")
+    @Pattern(regexp = "^[A-Za-zА-Яа-яЁё]+$", message = "Last name must contain only letters")
     private String sureName;
 
     public User() {}

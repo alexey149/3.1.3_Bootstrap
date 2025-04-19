@@ -26,7 +26,13 @@ public class UserDaoImp implements UserDao {
     }
 
     public void save(User user) {
-        entityManager.persist(user);
+       if(user.getId() == 0) {
+           entityManager.persist(user);
+       }else {
+           entityManager.merge(user);
+       }
+
+
     }
 
     public void update(User user) {
